@@ -114,6 +114,14 @@ open class CDMarkdownLabel: UILabel {
         super.init(frame: frame)
         self.configure()
     }
+    
+    public init(numberOfLines: Int, frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.numberOfLines = numberOfLines
+        
+        self.configure()
+    }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

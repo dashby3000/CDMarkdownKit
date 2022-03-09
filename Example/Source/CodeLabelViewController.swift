@@ -52,7 +52,7 @@ class CodeLabelViewController: BaseViewController {
         }
 
         // Example initialization of CDMarkdownLabel
-        let codeLabel = CDMarkdownLabel(frame: self.rect)
+        let codeLabel = CDMarkdownLabel(numberOfLines: 0, frame: self.rect)
         codeLabel.delegate = self
         codeLabel.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(codeLabel)
