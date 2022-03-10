@@ -36,7 +36,7 @@ import SafariServices
 import UIKit
 
 @objc public protocol CDMarkdownLabelDelegate: AnyObject {
-    func markdownLabel(didSelect url: URL)
+    @objc optional func markdownLabel(didSelect url: URL)
     @objc optional func markdownLabel(wantsToShow url: URL)
 }
 
@@ -261,7 +261,7 @@ open class CDMarkdownLabel: UILabel {
                                                  style: .default,
                                                  handler: { _ in
                                                     if let delegate = self.delegate {
-                                                        delegate.markdownLabel(didSelect: url)
+                                                        delegate.markdownLabel?(didSelect: url)
                                                     }
         }))
 #if os(iOS)
