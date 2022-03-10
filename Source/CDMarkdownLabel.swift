@@ -35,8 +35,9 @@ import SafariServices
 
 import UIKit
 
-public protocol CDMarkdownLabelDelegate: AnyObject {
-    func didSelect(_ url: URL)
+@objc public protocol CDMarkdownLabelDelegate: AnyObject {
+    func markdownLabel(didSelect url: URL)
+    @objc optional func markdownLabel(wantsToShow url: URL)
 }
 
 typealias URLRange = (url: URL, range: NSRange)
@@ -236,7 +237,12 @@ open class CDMarkdownLabel: UILabel {
     }
 
     // MARK: - Private Methods
+    private func displayActionController2(forUrl url: URL) {
+        guard let delegate = delegate else { return }
 
+        delegate.markdownLabel?(wantsToShow: url)
+    }
+    
     private func displayActionController(forUrl url: URL) {
         var parentViewController: UIViewController?
         var parentResponder: UIResponder? = self
@@ -255,7 +261,7 @@ open class CDMarkdownLabel: UILabel {
                                                  style: .default,
                                                  handler: { _ in
                                                     if let delegate = self.delegate {
-                                                        delegate.didSelect(url)
+                                                        delegate.markdownLabel(didSelect: url)
                                                     }
         }))
 #if os(iOS)
@@ -320,7 +326,7 @@ open class CDMarkdownLabel: UILabel {
         case .ended:
             guard let selectedRange = self.selectedURLRange else { return avoidSuperCall }
 
-            self.displayActionController(forUrl: selectedRange.url)
+            self.displayActionController2(forUrl: selectedRange.url)
 
             let when = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: when) {

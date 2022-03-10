@@ -81,7 +81,7 @@ class CodeLabelViewController: BaseViewController {
 
 extension CodeLabelViewController: CDMarkdownLabelDelegate {
 
-    func didSelect(_ url: URL) {
+    func markdownLabel(didSelect url: URL) {
         UIApplication.shared.open(url,
                                   options: [:],
                                   completionHandler: nil)

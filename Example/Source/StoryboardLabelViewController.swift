@@ -77,7 +77,7 @@ class StoryboardLabelViewController: BaseViewController {
 
 extension StoryboardLabelViewController: CDMarkdownLabelDelegate {
 
-    func didSelect(_ url: URL) {
+    func markdownLabel(didSelect url: URL) {
         UIApplication.shared.open(url,
                                   options: [:],
                                   completionHandler: nil)
