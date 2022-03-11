@@ -185,6 +185,9 @@ open class CDMarkdownParser {
                                          with: " ",
                                          range: NSRange(location: 0,
                                                         length: mutableString.length))
+        
+        // This removes spaces, newlines, etc - which is not ok for the usecase
+        /*
         let regExp = try? NSRegularExpression(pattern: "^\\s+",
                                               options: .anchorsMatchLines)
         if let regExp = regExp {
@@ -194,6 +197,8 @@ open class CDMarkdownParser {
                                                  length: mutableString.length),
                                   withTemplate: "")
         }
+        */
+        
         let range = NSRange(location: 0,
                             length: attributedString.length)
 
