@@ -142,7 +142,8 @@ open class CDMarkdownParser {
         self.automaticLinkDetectionEnabled = automaticLinkDetectionEnabled
         self.escapingElements = [codeEscaping, escaping]
 #if os(iOS) || os(macOS) || os(tvOS)
-        self.defaultElements = [header, list, quote, link, automaticLink, image, bold, italic]
+        //self.defaultElements = [header, list, quote, link, automaticLink, image, bold, italic]
+        self.defaultElements = [header, list, quote, link, automaticLink, bold, italic]
 #else
         self.defaultElements = [header, list, quote, link, automaticLink, bold, italic]
 #endif
