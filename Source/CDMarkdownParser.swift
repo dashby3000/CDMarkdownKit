@@ -216,7 +216,6 @@ open class CDMarkdownParser {
             }
         }
         
-        print(attributedString)
         return attributedString
     }
 }
