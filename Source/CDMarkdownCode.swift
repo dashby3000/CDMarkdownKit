@@ -68,7 +68,7 @@ open class CDMarkdownCode: CDMarkdownCommonElement {
         // Remove \n if in string, not valid in Code element
         // Use Syntax element for \n to parse in string
         mutableString.replaceOccurrences(of: "\n",
-                                         with: "",
+                                         with: " ",
                                          options: [],
                                          range: range)
     }
