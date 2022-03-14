@@ -45,7 +45,7 @@ open class CDMarkdownLayoutManager: NSLayoutManager {
             (self.roundSyntaxCorners == true && color.isEqualTo(otherColor: UIColor.syntaxBackgroundGray())) ||
             self.roundAllCorners == true {
 
-            cornerRadius = 3
+            cornerRadius = 5
         }
 
         let path = CGMutablePath()
